@@ -60,6 +60,9 @@ samsung.data$activity <- revalue(samsung.data$activity, c("1"="WALKING", "2"="WA
 
 ######### - Appropriately labels the data set with descriptive variable names
 
+
+colnames(samsung.data.ex1) <- gsub("[\\(\\)-]", "", colnames(samsung.data.ex1))
+
 colnames(samsung.data.ex1) <- gsub("^t","time",colnames(samsung.data.ex1))
 colnames(samsung.data.ex1) <- gsub("^f","frequencydomain",colnames(samsung.data.ex1))
 colnames(samsung.data.ex1) <- gsub("Acc","Accelerometer",colnames(samsung.data.ex1))
@@ -75,6 +78,7 @@ colnames(samsung.data.ex1) <- gsub("std","StandardDeviation",colnames(samsung.da
 ######### - From the data set in step 4, creates a second, independent tidy data set 
 ######### - with the average of each variable for each activity and each subject.
 
+library(dplyr)
 samsung.data.ex2<- samsung.data.ex1 %>% group_by(activity, subject) %>% summarize_all(mean)
 write.table(samsung.data.ex2, "./data/mytidydata.txt", quote = FALSE, row.names = FALSE)
 
