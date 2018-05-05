@@ -45,7 +45,7 @@ samsung.data.ex1 <- samsung.data[,grep("activity|subject|mean|std", colnames(sam
 summary(samsung.data.ex1)
 
 
-######### - Extracts only the measurements on the mean and standard deviation for each measurement.
+######### - Uses descriptive activity names to name the activities in the data set
 
 # Option 1
 Xlabels.value <- read.table(file.path(path.files,"activity_labels.txt"), header= FALSE)
